@@ -1,6 +1,8 @@
+import { Injectable } from 'src/contexts/shared/dependency-injection/injectable';
 import { Payment, PrimitivePayment } from '../../domain/payment';
 import { PaymentRepository } from '../../domain/payment.repository';
 
+@Injectable()
 export class InMemoryPaymentRepository implements PaymentRepository {
   private payments: PrimitivePayment[] = [];
 
