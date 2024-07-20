@@ -1,11 +1,11 @@
-import { Payment, PrimitivePaymentValueObject } from '../../domain/payment';
+import { Payment, PrimitivePayment } from '../../domain/payment';
 import { PaymentRepository } from '../../domain/payment.repository';
 
 export class InMemoryPaymentRepository implements PaymentRepository {
-  private payments: PrimitivePaymentValueObject[] = [];
+  private payments: PrimitivePayment[] = [];
 
   async create(payment: Payment): Promise<void> {
-    this.payments.push(payment.toValue());
+    this.payments.push(payment.toPrimitives());
   }
 
   async getById(paymentId: string): Promise<Payment | null> {
