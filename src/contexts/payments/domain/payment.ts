@@ -1,26 +1,26 @@
-import { randomUUID } from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
-export interface PrimitiveValueObject {
+export interface PrimitivePayment {
   id: string;
   amount: number;
   customerId: string;
 }
 
 export class Payment {
-  constructor(private readonly payment: PrimitiveValueObject) {}
+  constructor(private readonly payment: PrimitivePayment) {}
 
   static create(createPayment: {
-    ammount: number;
+    amount: number;
     customerId: string;
   }): Payment {
     return new Payment({
-      id: randomUUID(),
-      amount: createPayment.ammount,
+      id: uuidv4(),
+      amount: createPayment.amount,
       customerId: createPayment.customerId,
     });
   }
 
-  toValue(): PrimitiveValueObject {
+  toPrimitives(): PrimitivePayment {
     return {
       id: this.payment.id,
       amount: this.payment.amount,
