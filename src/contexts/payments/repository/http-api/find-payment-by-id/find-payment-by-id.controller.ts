@@ -11,10 +11,10 @@ export class FindPaymentByIdController {
 
   @Get(':id')
   async run(
-    @Param('id') findPaymentByIdHttpDto: FindPaymentByIdHttpDto,
+    @Param() params: FindPaymentByIdHttpDto,
   ): Promise<{ payment: PrimitivePayment }> {
     try {
-      return this.findPaymentByIdUseCase.execute(findPaymentByIdHttpDto);
+      return this.findPaymentByIdUseCase.execute({ id: params.id });
     } catch (error) {
       if (error instanceof PaymentNotFoundException) {
         throw new NotFoundException(error.message);

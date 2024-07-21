@@ -1,5 +1,5 @@
 export class PaymentNotFoundException extends Error {
-  constructor(id: string) {
+  constructor(public readonly id: string) {
     super(`Payment with id ${id} not found`);
   }
 }

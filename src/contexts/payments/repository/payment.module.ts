@@ -3,11 +3,14 @@ import { CreatePaymentController } from './http-api/create-payment/create-paymen
 import { CreatePaymentUseCase } from '../application/create-payment-use-case/create-payment-use-case';
 import { InMemoryPaymentRepository } from './repositories/in-memory.payment-repository';
 import { PaymentRepository } from '../domain/payment.repository';
+import { FindPaymentByIdController } from './http-api/find-payment-by-id/find-payment-by-id.controller';
+import { FindPaymentByIdUseCase } from '../application/find-payment-by-id-use-case/find-payment-by-id.use-case';
 
 @Module({
-  controllers: [CreatePaymentController],
+  controllers: [CreatePaymentController, FindPaymentByIdController],
   providers: [
     CreatePaymentUseCase,
+    FindPaymentByIdUseCase,
     InMemoryPaymentRepository,
     {
       provide: PaymentRepository,
