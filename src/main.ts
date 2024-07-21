@@ -48,7 +48,7 @@ async function bootstrap() {
 
   logger.info(`App is ready and listening on port ${port} 🚀`);
 }
-bootstrap();
+bootstrap().catch(handleError);
 
 function handleError(error: unknown) {
   // eslint-disable-next-line no-console
